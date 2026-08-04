@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulação de Quitação</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #btn-simular {
+            background: #2563eb;
+            color: white;
+        }
+
+        #btn-gerar-boleto {
+            background: #059669;
+            color: white;
+            margin-left: 8px;
+        }
+
+        #btn-gerar-boleto:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .resultado {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .erro {
+            color: #dc2626;
+        }
+
+        .sucesso {
+            color: #047857;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Quitação Antecipada</h1>
+
+    <label for="contrato">Contrato</label>
+    <input
+            id="contrato"
+            type="text"
+            placeholder="Informe o número do contrato">
+
+    <label for="produto">Produto</label>
+    <select id="produto">
+        <option value="">Selecione</option>
+        <option value="596">596 - Cartão Gold</option>
+        <option value="597">597 - Cartão Platinum</option>
+        <option value="598">598 - Cartão Black</option>
+    </select>
+
+    <label for="valor-divida">Valor da dívida</label>
+    <input
+            id="valor-divida"
+            type="number"
+            step="0.01"
+            placeholder="Ex.: 1500.00">
+
+    <label for="desconto">Desconto</label>
+    <input
+            id="desconto"
+            type="number"
+            step="0.01"
+            placeholder="Ex.: 200.00">
+
+    <label for="valor-quitacao">Valor da quitação</label>
+    <input
+            id="valor-quitacao"
+            type="text"
+            readonly>
+
+    <button id="btn-simular" type="button">
+        Simular
+    </button>
+
+    <button id="btn-gerar-boleto" type="button" disabled>
+        Gerar boleto
+    </button>
+
+    <div class="resultado">
+        <p id="mensagem"></p>
+        <p id="numero-boleto"></p>
+    </div>
+
+</div>
+
+<script>
+    const contrato = document.querySelector("#contrato");
+    const produto = document.querySelector("#produto");
+    const valorDivida = document.querySelector("#valor-divida");
+    const desconto = document.querySelector("#desconto");
+    const valorQuitacao = document.querySelector("#valor-quitacao");
+
+    const botaoSimular = document.querySelector("#btn-simular");
+    const botaoGerarBoleto = document.querySelector("#btn-gerar-boleto");
+
+    const mensagem = document.querySelector("#mensagem");
+    const numeroBoleto = document.querySelector("#numero-boleto");
+
+    botaoSimular.addEventListener("click", () => {
+
+        mensagem.textContent = "";
+        numeroBoleto.textContent = "";
+        botaoGerarBoleto.disabled = true;
+
+        const divida = Number(valorDivida.value);
+        const valorDesconto = Number(desconto.value);
+
+        if (!contrato.value.trim()) {
+            exibirErro("Informe o contrato.");
+            return;
+        }
+
+        if (!produto.value) {
+            exibirErro("Selecione o produto.");
+            return;
+        }
+
+        if (divida <= 0) {
+            exibirErro("O valor da dívida deve ser maior que zero.");
+            return;
+        }
+
+        if (valorDesconto < 0) {
+            exibirErro("O desconto não pode ser negativo.");
+            return;
+        }
+
+        if (valorDesconto >= divida) {
+            exibirErro("O desconto deve ser menor que o valor da dívida.");
+            return;
+        }
+
+        const totalQuitacao = divida - valorDesconto;
+
+        valorQuitacao.value = totalQuitacao.toFixed(2);
+
+        mensagem.className = "sucesso";
+        mensagem.textContent = "Simulação realizada com sucesso.";
+
+        botaoGerarBoleto.disabled = false;
+    });
+
+    botaoGerarBoleto.addEventListener("click", () => {
+
+        if (!valorQuitacao.value) {
+            exibirErro("Realize a simulação antes de gerar o boleto.");
+            return;
+        }
+
+        const boleto = gerarNumeroBoleto();
+
+        mensagem.className = "sucesso";
+        mensagem.textContent = "Boleto de quitação gerado com sucesso.";
+
+        numeroBoleto.textContent = `Número do boleto: ${boleto}`;
+    });
+
+    function exibirErro(texto) {
+        mensagem.className = "erro";
+        mensagem.textContent = texto;
+        valorQuitacao.value = "";
+    }
+
+    function gerarNumeroBoleto() {
+        return Math.floor(100000000 + Math.random() * 900000000);
+    }
+</script>
+
+</body>
+</html>

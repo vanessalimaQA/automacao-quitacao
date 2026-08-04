@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Quitação Bancária</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #btn-simular {
+            background: #2563eb;
+            color: white;
+        }
+
+        #btn-gerar-boleto {
+            background: #059669;
+            color: white;
+            margin-left: 8px;
+        }
+
+        #btn-gerar-boleto:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        #mensagem-resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #numero-boleto {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #047857;
+        }
+
+        .erro {
+            color: #dc2626;
+        }
+
+        .sucesso {
+            color: #047857;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Simulação de Quitação</h1>
+
+    <label for="id-conta">Id da conta</label>
+    <input
+            id="id-conta"
+            type="text"
+            placeholder="Informe o Id da conta">
+
+    <label for="valor">Valor da dívida</label>
+    <input
+            id="valor"
+            type="number"
+            step="0.01"
+            min="0.01"
+            placeholder="Ex.: 1500.00">
+
+    <button id="btn-simular" type="button">
+        Simular
+    </button>
+
+    <button
+            id="btn-gerar-boleto"
+            type="button"
+            disabled>
+        Gerar boleto
+    </button>
+
+    <p id="mensagem-resultado"></p>
+    <p id="numero-boleto"></p>
+
+</div>
+
+<script>
+    const campoIdConta =
+        document.querySelector("#id-conta");
+
+    const campoValor =
+        document.querySelector("#valor");
+
+    const botaoSimular =
+        document.querySelector("#btn-simular");
+
+    const botaoGerarBoleto =
+        document.querySelector("#btn-gerar-boleto");
+
+    const mensagem =
+        document.querySelector("#mensagem-resultado");
+
+    const numeroBoleto =
+        document.querySelector("#numero-boleto");
+
+    botaoSimular.addEventListener(
+        "click",
+        function () {
+
+            limparResultado();
+
+            const idConta =
+                campoIdConta.value.trim();
+
+            const valor =
+                Number(campoValor.value);
+
+            if (!idConta) {
+                exibirErro("Informe o Id da conta.");
+                return;
+            }
+
+            if (!Number.isInteger(Number(idConta))
+                || Number(idConta) <= 0) {
+
+                exibirErro(
+                    "O Id da conta deve ser um número maior que zero."
+                );
+
+                return;
+            }
+
+            if (!valor || valor <= 0) {
+                exibirErro(
+                    "O valor da dívida deve ser maior que zero."
+                );
+
+                return;
+            }
+
+            mensagem.className = "sucesso";
+
+            mensagem.textContent =
+                "Simulação realizada com sucesso para a conta "
+                + idConta
+                + ".";
+
+            botaoGerarBoleto.disabled = false;
+        }
+    );
+
+    botaoGerarBoleto.addEventListener(
+        "click",
+        function () {
+
+            if (botaoGerarBoleto.disabled) {
+                return;
+            }
+
+            const boleto = gerarNumeroBoleto();
+
+            mensagem.className = "sucesso";
+
+            mensagem.textContent =
+                "Boleto de quitação gerado com sucesso.";
+
+            numeroBoleto.textContent =
+                "Número do boleto: " + boleto;
+        }
+    );
+
+    function exibirErro(texto) {
+        mensagem.className = "erro";
+        mensagem.textContent = texto;
+
+        numeroBoleto.textContent = "";
+        botaoGerarBoleto.disabled = true;
+    }
+
+    function limparResultado() {
+        mensagem.textContent = "";
+        mensagem.className = "";
+
+        numeroBoleto.textContent = "";
+        botaoGerarBoleto.disabled = true;
+    }
+
+    function gerarNumeroBoleto() {
+        return Math.floor(
+            100000000 + Math.random() * 900000000
+        );
+    }
+</script>
+
+</body>
+</html>

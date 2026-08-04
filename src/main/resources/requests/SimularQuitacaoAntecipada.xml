@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:con="http://conductor.com.br/">
+
+    <soapenv:Header/>
+
+    <soapenv:Body>
+
+        <con:SimularQuitacaoAntecipada>
+
+            <con:req>
+
+                <con:IdConta>${idConta}</con:IdConta>
+
+            </con:req>
+
+        </con:SimularQuitacaoAntecipada>
+
+    </soapenv:Body>
+
+</soapenv:Envelope>
