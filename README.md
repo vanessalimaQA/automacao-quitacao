@@ -1,397 +1,242 @@
 # 🚀 QA Automation Framework
 
-<p align="center">
-Framework de automação de testes desenvolvido em <strong>Java 21</strong>, utilizando <strong>Playwright</strong>, <strong>JUnit 5</strong>, <strong>AssertJ</strong>, integração <strong>SOAP</strong> e arquitetura em camadas.
-</p>
+> Framework profissional de automação de testes desenvolvido em **Java 21**, utilizando **Playwright**, **JUnit 5**, **AssertJ**, **SOAP**, **SQL Server** e arquitetura em camadas.
 
 <p align="center">
 
-![Java](https://img.shields.io/badge/Java-21-orange)
-![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
-![JUnit](https://img.shields.io/badge/JUnit-5-red)
-![Maven](https://img.shields.io/badge/Maven-Build-blue)
-![AssertJ](https://img.shields.io/badge/AssertJ-Assertions-yellow)
-![SOAP](https://img.shields.io/badge/API-SOAP-purple)
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Playwright](https://img.shields.io/badge/Playwright-Automation-green?style=for-the-badge&logo=playwright)
+![JUnit](https://img.shields.io/badge/JUnit-5-red?style=for-the-badge)
+![AssertJ](https://img.shields.io/badge/AssertJ-Assertions-yellow?style=for-the-badge)
+![SOAP](https://img.shields.io/badge/API-SOAP-purple?style=for-the-badge)
+![SQL Server](https://img.shields.io/badge/SQL_Server-Database-red?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build-blue?style=for-the-badge&logo=apachemaven)
+![Git](https://img.shields.io/badge/Git-VersionControl-black?style=for-the-badge&logo=git)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)
 
 </p>
 
 ---
 
-## 📌 Sobre o projeto
+# 📌 Sobre o Projeto
 
-Este projeto demonstra a construção de um framework de automação de testes com foco em qualidade, organização, reutilização de código e separação de responsabilidades.
+Este projeto demonstra a construção de um framework profissional de automação de testes utilizando Java e Playwright, aplicando princípios de organização, reutilização de código e arquitetura escalável.
 
-O framework contempla automação Web, estrutura para comunicação com serviços SOAP, manipulação de XML, validações de regras de negócio, geração de evidências e preparação da camada de acesso a dados.
+O framework contempla automação Web, integração com serviços SOAP, manipulação de XML, consultas em banco SQL Server, validações de regras de negócio, captura automática de evidências e separação clara das responsabilidades entre as camadas.
 
-O objetivo é permitir a evolução de cenários automatizados mantendo o código organizado, escalável e de fácil manutenção.
-
----
-
-## 🧪 Cenário de negócio
-
-Como domínio de demonstração, o framework utiliza um fluxo de **quitação bancária**, permitindo exercitar diferentes camadas de uma automação.
-
-Exemplos:
-
-- simulação de quitação;
-- interação com interface Web;
-- envio de requisições SOAP;
-- processamento de respostas XML;
-- validação de respostas;
-- validação de regras de negócio;
-- geração de evidências;
-- preparação para consultas e validações em banco de dados.
+Seu objetivo é servir como um framework reutilizável para projetos corporativos de automação de testes.
 
 ---
 
-## 🛠️ Tecnologias
+# ✨ Principais Funcionalidades
 
-| Tecnologia | Utilização |
-|---|---|
-| Java 21 | Linguagem principal |
-| Playwright | Automação Web |
-| JUnit 5 | Execução e organização dos testes |
-| AssertJ | Assertions |
-| Maven | Build e gerenciamento de dependências |
-| SOAP | Testes de serviços Web |
-| XML | Requests e responses SOAP |
-| JDBC | Estrutura de acesso ao banco |
-| Git | Versionamento |
-| PowerShell | Scripts auxiliares |
+- ✅ Automação Web com Playwright
+- ✅ Arquitetura Page Object Model
+- ✅ Flow Layer
+- ✅ Integração SOAP
+- ✅ XML Builder
+- ✅ XML Parser
+- ✅ Repository Pattern
+- ✅ Banco de Dados SQL Server
+- ✅ Captura Automática de Screenshots
+- ✅ Configuração por Properties
+- ✅ Framework Escalável
+- ✅ Estrutura preparada para CI/CD
 
 ---
 
-## 🏗️ Arquitetura do Framework
+# 🏗 Arquitetura
 
-O projeto utiliza separação de responsabilidades através de diferentes camadas.
-
-```text
-                   TESTS
-                     │
-                     ▼
-                   FLOW
-                     │
-          ┌──────────┴──────────┐
-          ▼                     ▼
-        PAGES                SERVICES
-          │                     │
-          ▼                     ▼
-     PLAYWRIGHT             SOAP CLIENT
-                                │
-                                ▼
-                             BUILDER
-                                │
-                                ▼
-                              PARSER
-                                │
-                                ▼
-                             RESPONSE
-
-
-                  REPOSITORY
-                     │
-                     ▼
-                  DATABASE
-                     │
-                     ▼
-                    JDBC
+```
+                 TESTS
+                    │
+      ┌─────────────┴─────────────┐
+      ▼                           ▼
+ Web Tests                  Unit Tests
+      │
+      ▼
+    Flow
+      │
+      ▼
+    Pages
+      │
+      ▼
+ Playwright
+      │
+      ▼
+ SOAP Services
+      │
+      ▼
+   XML Parser
+      │
+      ▼
+ Repository
+      │
+      ▼
+ SQL Server
 ```
 
-Essa separação permite alterar uma camada com menor impacto sobre as demais partes do framework.
-
 ---
 
-## 🧩 Principais camadas
+# 📂 Estrutura do Projeto
 
-### Pages
-
-Responsável pela interação com os elementos da interface.
-
-### Flow
-
-Centraliza fluxos de negócio compostos por múltiplas ações.
-
-### Service
-
-Coordena operações relacionadas aos serviços.
-
-### SOAP Client
-
-Responsável pelo envio das requisições SOAP.
-
-### Builder
-
-Realiza a construção dos requests utilizados pelos serviços.
-
-### Parser
-
-Transforma as respostas recebidas em estruturas manipuláveis pelo framework.
-
-### Repository
-
-Centraliza operações relacionadas ao acesso aos dados.
-
-### Validator
-
-Concentra validações e regras utilizadas pelos testes.
-
----
-
-## 📂 Estrutura do projeto
-
-```text
+```
 automacao-quitacao
 │
-├── evidencias
-│
-├── scripts
-│   ├── create-class.ps1
-│   ├── create-test.ps1
-│   └── framework.ps1
-│
-├── src
-│   ├── main
-│   │   ├── java/com/automation
-│   │   │   ├── builder
-│   │   │   ├── client
-│   │   │   ├── config
-│   │   │   ├── database
-│   │   │   ├── factory
-│   │   │   ├── flow
-│   │   │   ├── locators
-│   │   │   ├── model
-│   │   │   ├── pages
-│   │   │   ├── parser
-│   │   │   ├── repository
-│   │   │   ├── request
-│   │   │   ├── response
-│   │   │   ├── service
-│   │   │   ├── utils
-│   │   │   └── validator
-│   │   │
-│   │   └── resources
+├── docs/
+├── evidencias/
+├── scripts/
+├── src/
+│   ├── main/
+│   │   ├── builder/
+│   │   ├── client/
+│   │   ├── config/
+│   │   ├── database/
+│   │   ├── factory/
+│   │   ├── flow/
+│   │   ├── locators/
+│   │   ├── model/
+│   │   ├── pages/
+│   │   ├── parser/
+│   │   ├── repository/
+│   │   ├── request/
+│   │   ├── response/
+│   │   ├── service/
+│   │   ├── utils/
+│   │   └── validator/
 │   │
-│   └── test
-│       ├── java/com/automation
-│       └── resources
+│   └── resources/
 │
-├── .gitignore
-├── pom.xml
-└── README.md
+└── pom.xml
 ```
 
 ---
 
-## 🌐 Automação Web
+# 📸 Evidências
 
-A camada Web utiliza **Playwright** e segue conceitos de Page Object.
+As execuções geram automaticamente screenshots para auxiliar na análise dos testes.
 
-Exemplo de responsabilidade:
+```
+evidencias/
 
-```java
-public void simularQuitacao(
-        String idConta,
-        String valorDivida
-) {
-    informarIdConta(idConta);
-    informarValorDivida(valorDivida);
-    clicarEmSimular();
-}
+✔ Login
+
+✔ Fluxo de Quitação
+
+✔ Screenshots Automáticos
 ```
 
-O teste não precisa conhecer diretamente os seletores utilizados pela página.
-
 ---
 
-## 🔌 Automação SOAP
+# ▶ Como Executar
 
-O framework possui estrutura separada para trabalhar com serviços SOAP.
-
-Fluxo:
-
-```text
-Test
- ↓
-Service
- ↓
-Builder
- ↓
-SOAP Client
- ↓
-Endpoint
- ↓
-Response
- ↓
-Parser
- ↓
-Validator
-```
-
-Isso reduz o acoplamento entre os testes e a implementação da comunicação com o serviço.
-
----
-
-## 🗄️ Banco de dados
-
-O projeto possui uma camada preparada para acesso a banco de dados através de JDBC.
-
-A arquitetura permite manter consultas e operações de dados fora das classes de teste.
-
-```text
-Test
- ↓
-Repository
- ↓
-DatabaseExecutor
- ↓
-DatabaseConnection
- ↓
-Database
-```
-
-A integração com ambiente real e os cenários completos de validação em banco fazem parte da evolução do projeto.
-
----
-
-## 📸 Evidências
-
-O framework possui suporte à captura de screenshots durante a execução dos testes Web.
-
-### Fluxo de quitação
-
-![Fluxo de Quitação](evidencias/deveRealizarFluxoDeQuitacaoComVariosContratos.png)
-
-### Login
-
-![Login](evidencias/deveRealizarLoginComSucesso.png)
-
----
-
-## ▶️ Executando o projeto
-
-### Executar todos os testes
+## Executar todos os testes
 
 ```bash
 mvn clean test
 ```
 
-### Executar teste Web
+## Executar teste Web
 
 ```bash
-mvn "-Dtest=QuitacaoWebTest" test
+mvn -Dtest=QuitacaoWebTest test
 ```
 
-### Executar teste do Builder
+## Executar Builder
 
 ```bash
-mvn "-Dtest=SimularQuitacaoBuilderTest" test
+mvn -Dtest=SimularQuitacaoBuilderTest test
 ```
 
-### Executar teste do Service
+## Executar Service
 
 ```bash
-mvn "-Dtest=SimularQuitacaoServiceTest" test
+mvn -Dtest=SimularQuitacaoServiceTest test
 ```
 
 ---
 
-## ⚙️ Configuração
+# 🛠 Tecnologias
 
-Exemplo de configuração do navegador:
-
-```properties
-browser=chrome
-headless=false
-
-viewport.width=1920
-viewport.height=1080
-```
-
-Para execução sem interface:
-
-```properties
-headless=true
-```
+- Java 21
+- Playwright
+- JUnit 5
+- AssertJ
+- SOAP
+- SQL Server
+- Maven
+- Git
+- GitHub
+- PowerShell
 
 ---
 
-## 🛠️ Scripts auxiliares
+# 🚀 Roadmap
 
-O projeto possui scripts PowerShell para auxiliar na criação e organização de classes.
+## ✔ Concluído
 
-Exemplo:
-
-```powershell
-.\scripts\framework.ps1 page LoginPage
-```
-
-Também existem scripts específicos para criação de classes e testes.
-
----
-
-## 🗺️ Roadmap
-
-### Implementado
-
-- [x] Java 21
-- [x] Maven
-- [x] Playwright
-- [x] JUnit 5
-- [x] AssertJ
-- [x] Page Object
-- [x] Flow Layer
-- [x] Builder
-- [x] SOAP Client
-- [x] Parser
-- [x] Repository
-- [x] Validator
-- [x] Screenshots
-- [x] Scripts PowerShell
-- [x] Git
-- [x] GitHub
-
-### Próximas evoluções
-
-- [ ] Rest Assured
-- [ ] Testes REST
-- [ ] Jackson
-- [ ] Faker
-- [ ] Apache POI
-- [ ] Lombok
-- [ ] Allure Report completo
-- [ ] Integração completa com SQL Server
-- [ ] GitHub Actions
-- [ ] Pipeline CI/CD
-- [ ] Execução paralela
-- [ ] Docker
-
----
-
-## 🎯 Boas práticas aplicadas
-
-- Page Object Model
-- Separação de responsabilidades
-- Reutilização de código
-- Configuração externa
-- Builder Pattern
+- Playwright
+- SOAP
+- XML Builder
+- XML Parser
 - Repository Pattern
-- Assertions com AssertJ
-- Testes independentes
-- Evidências automatizadas
-- Versionamento com Git
+- Validator Layer
+- SQL Server
+- Captura de Evidências
+- GitHub
+
+## ⏳ Próximas Evoluções
+
+- REST Assured
+- Jackson
+- Faker
+- Apache POI
+- Allure Reports
+- GitHub Actions
+- Docker
+- Execução Paralela
+- Integração Contínua
 
 ---
 
-## 👩‍💻 Autora
+# 👩‍💻 Autora
 
-**Vanessa Lima**
+## Vanessa Lima
 
-Estudante de Análise e Desenvolvimento de Sistemas com foco em **Quality Assurance e Automação de Testes**.
+QA Automation Engineer em formação, apaixonada por Qualidade de Software, Automação de Testes e Arquitetura de Frameworks.
 
-Tecnologias em estudo e aplicação:
+### Tecnologias
 
-**Java • Playwright • Selenium • APIs • SOAP • SQL • Maven • Git**
+- Java
+- Playwright
+- Selenium
+- SOAP
+- SQL Server
+- JUnit
+- Maven
+- Git
+- GitHub
+
+### Contato
+
+🔗 LinkedIn
+
+https://www.linkedin.com/in/vanessa-ads/
+
+🔗 GitHub
+
+https://github.com/vanessalimaQA
 
 ---
 
-⭐ Este projeto está em evolução contínua como parte do desenvolvimento de conhecimentos em QA Automation e Engenharia de Qualidade.
+# ⭐ Contribuições
+
+Este projeto foi desenvolvido para fins de estudo, evolução profissional e construção de portfólio em QA Automation.
+
+Contribuições, sugestões e melhorias são sempre bem-vindas.
+
+---
+
+# 📄 Licença
+
+Este projeto está licenciado sob a licença MIT.
