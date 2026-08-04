@@ -1,16 +1,26 @@
-# 🚀 QA Automation Framework
+# QA Automation Framework
 
-Framework de automação desenvolvido em **Java** utilizando **Playwright**, seguindo boas práticas de arquitetura para automação Web, integração com serviços SOAP e preparação para validações em banco de dados.
+Framework de automação desenvolvido em **Java 21**, com **Playwright**, **JUnit 5** e **AssertJ**, voltado para testes Web, integração SOAP, leitura de XML e organização de testes em camadas.
 
----
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Playwright](https://img.shields.io/badge/Playwright-1.54-green)
+![JUnit](https://img.shields.io/badge/JUnit-5-red)
+![Maven](https://img.shields.io/badge/Maven-Build-blue)
+![Status](https://img.shields.io/badge/build-passing-brightgreen)
 
-# 📌 Objetivo
+## Objetivo
 
-Este projeto foi desenvolvido com o objetivo de demonstrar a construção de um framework de automação profissional, aplicando princípios de organização, reutilização de código e separação de responsabilidades.
+O projeto demonstra a construção de um framework de automação com foco em:
 
----
+- separação de responsabilidades;
+- reutilização de código;
+- testes Web com Page Object Model;
+- integração com serviços SOAP;
+- conversão de respostas XML em objetos Java;
+- preparação para validações em banco de dados;
+- geração automática de evidências.
 
-# 🛠 Tecnologias
+## Tecnologias
 
 - Java 21
 - Maven
@@ -18,119 +28,196 @@ Este projeto foi desenvolvido com o objetivo de demonstrar a construção de um 
 - JUnit 5
 - AssertJ
 - SOAP Web Services
-- SQL Server (estrutura preparada)
+- XML DOM Parser
+- JDBC
+- Git e GitHub
+- PowerShell
 
----
+## Arquitetura
 
-# 🏗 Arquitetura
-
-O projeto foi organizado utilizando uma arquitetura em camadas.
-
-```
+```text
 Tests
-   │
-   ▼
+  │
+  ▼
 Flow
-   │
-   ▼
-Pages
-   │
-   ▼
-Services
-   │
-   ▼
-SOAP Client
-   │
-   ▼
-Parser
-   │
-   ▼
+  │
+  ├──────────────► Pages ─► Playwright
+  │
+  └──────────────► Services
+                       │
+                       ▼
+                  SOAP Client
+                       │
+                       ▼
+                     Parser
+                       │
+                       ▼
+                    Response
+
 Repository
-   │
-   ▼
-Database
+  │
+  ▼
+DatabaseExecutor
+  │
+  ▼
+JDBC
 ```
 
----
+### Responsabilidade das camadas
 
-# 📂 Estrutura
+| Camada | Responsabilidade |
+|---|---|
+| `flow` | Coordena fluxos de negócio |
+| `pages` | Interage com a interface Web |
+| `locators` | Centraliza seletores |
+| `service` | Coordena chamadas de serviços |
+| `client` | Executa requisições SOAP |
+| `builder` | Monta requests XML |
+| `parser` | Converte XML em objetos Java |
+| `response` | Representa respostas dos serviços |
+| `repository` | Centraliza consultas SQL |
+| `database` | Gerencia conexão e execução JDBC |
+| `validator` | Concentra validações de negócio |
 
+## Estrutura do projeto
+
+```text
+automacao-quitacao
+├── evidencias
+├── scripts
+│   ├── create-class.ps1
+│   ├── create-test.ps1
+│   └── framework.ps1
+├── src
+│   ├── main
+│   │   ├── java/com/automation
+│   │   │   ├── builder
+│   │   │   ├── client
+│   │   │   ├── config
+│   │   │   ├── database
+│   │   │   ├── factory
+│   │   │   ├── flow
+│   │   │   ├── locators
+│   │   │   ├── model
+│   │   │   ├── pages
+│   │   │   ├── parser
+│   │   │   ├── repository
+│   │   │   ├── request
+│   │   │   ├── response
+│   │   │   ├── service
+│   │   │   ├── utils
+│   │   │   └── validator
+│   │   └── resources
+│   └── test
+│       ├── java/com/automation
+│       └── resources
+├── pom.xml
+└── README.md
 ```
-src
-├── main
-│   ├── builder
-│   ├── client
-│   ├── config
-│   ├── core
-│   ├── database
-│   ├── factory
-│   ├── flow
-│   ├── locators
-│   ├── model
-│   ├── pages
-│   ├── parser
-│   ├── repository
-│   ├── request
-│   ├── response
-│   ├── service
-│   ├── utils
-│   └── validator
-│
-└── test
-    ├── parser
-    ├── service
-    ├── validator
-    └── web
-```
 
----
+## Cenários implementados
 
-# ✅ Funcionalidades
+- abertura do navegador com Playwright;
+- simulação de quitação em aplicação HTML local;
+- preenchimento de conta e valor;
+- validação da mensagem de sucesso;
+- captura automática de screenshot;
+- montagem de request SOAP;
+- validação da substituição de parâmetros no XML;
+- parser de resposta SOAP;
+- tratamento de SOAP Fault;
+- validação de status HTTP;
+- teste da Service com cliente SOAP controlado;
+- validações de boleto com AssertJ.
 
-- Automação Web utilizando Playwright
-- Page Object Model
-- Flow Layer
-- Integração com SOAP
-- Parser XML
-- Builder Pattern
-- Repository Pattern
-- Validações automatizadas
-- Captura de evidências
-- Framework preparado para integração com banco de dados
+## Execução
 
----
+### Executar toda a suíte
 
-# ▶ Como executar
-
-```bash
+```powershell
 mvn clean test
 ```
 
-Ou executar um teste específico:
+### Executar somente o teste Web
 
-```bash
+```powershell
 mvn "-Dtest=QuitacaoWebTest" test
 ```
 
----
+### Executar somente o parser SOAP
 
-# 📸 Evidências
+```powershell
+mvn "-Dtest=SoapResponseParserTest" test
+```
 
-O framework realiza captura automática de screenshots após a execução dos testes.
+### Executar somente a Service
 
----
+```powershell
+mvn "-Dtest=SimularQuitacaoServiceTest" test
+```
 
-# 🚀 Próximas evoluções
+## Configuração do navegador
 
-- Relatórios Allure
-- Integração completa com SQL Server
-- Pipeline CI/CD
-- Execução paralela
-- Testes de API REST
-- Docker
+Exemplo de configuração:
 
----
+```properties
+browser=chrome
+headless=false
+viewport.width=1920
+viewport.height=1080
+```
 
-# 👨‍💻 Autor
+Para executar sem abrir a janela do navegador:
 
-Projeto desenvolvido para estudo e evolução em QA Automation utilizando boas práticas de arquitetura de testes.
+```properties
+headless=true
+```
+
+## Geradores PowerShell
+
+Criar uma classe:
+
+```powershell
+.\scripts\create-class.ps1 response MinhaResponse
+```
+
+Criar um teste:
+
+```powershell
+.\scripts\create-test.ps1 service MinhaServiceTest
+```
+
+Usar o gerador principal:
+
+```powershell
+.\scripts\framework.ps1 page LoginPage
+```
+
+Os scripts validam o caminho, criam o package correto e evitam sobrescrever arquivos existentes.
+
+## Evidências
+
+### Fluxo de quitação
+
+![Fluxo de quitação](evidencias/deveRealizarFluxoDeQuitacaoComVariosContratos.png)
+
+### Login com sucesso
+
+![Login com sucesso](evidencias/deveRealizarLoginComSucesso.png)
+
+## Próximas evoluções
+
+- relatório Allure completo;
+- pipeline com GitHub Actions;
+- integração real com banco de dados;
+- testes de API REST com Rest Assured;
+- Jackson para JSON e XML;
+- execução paralela;
+- parametrização com arquivos CSV e Excel;
+- Docker.
+
+## Autora
+
+**Vanessa Lima**
+
+QA Automation em formação, com foco em Java, Playwright, Selenium, testes de API, SOAP, SQL e arquitetura de frameworks de automação.
