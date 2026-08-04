@@ -1,242 +1,164 @@
-# 🚀 QA Automation Framework
+<div align="center">
 
-> Framework profissional de automação de testes desenvolvido em **Java 21**, utilizando **Playwright**, **JUnit 5**, **AssertJ**, **SOAP**, **SQL Server** e arquitetura em camadas.
+# Vanessa Lima
+
+### QA Automation • Quality Engineering • Test Automation
+
+Building scalable Test Automation Frameworks with Java, Playwright and Software Quality best practices.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/vanessa-ads/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github)](https://github.com/vanessalimaQA)
+
+</div>
+
+---
+
+# About
+
+I'm focused on **Quality Assurance**, **Test Automation** and **Quality Engineering**, building automation frameworks with emphasis on scalability, maintainability and clean architecture.
+
+My work is centered on creating reliable automation solutions for Web applications, SOAP services and database validations, following engineering best practices and continuous improvement.
+
+---
+
+# Core Expertise
+
+- QA Automation
+- Quality Engineering
+- Test Automation Frameworks
+- Web Automation
+- API Testing
+- SOAP Testing
+- Database Validation
+- Regression Testing
+- Integration Testing
+- Test Strategy
+- Software Quality
+- Continuous Improvement
+
+---
+
+# Tech Stack
+
+### Programming
+
+- Java
+- SQL
+
+### Test Automation
+
+- Playwright
+- Selenium
+- JUnit 5
+- AssertJ
+
+### API Testing
+
+- SOAP
+- XML
+
+### Database
+
+- SQL Server
+
+### Build & Versioning
+
+- Maven
+- Git
+- GitHub
+
+### Agile
+
+- Scrum
+- Kanban
+
+---
+
+# Featured Project
+
+## QA Automation Framework
+
+Enterprise-oriented automation framework developed using Java and Playwright.
+
+### Highlights
+
+- Page Object Model
+- Flow Layer
+- Builder Pattern
+- Repository Pattern
+- SOAP Client
+- XML Builder
+- XML Parser
+- SQL Server Validation
+- Screenshot Evidence
+- Clean Architecture
+
+### Repository
+
+👉 https://github.com/vanessalimaQA/automacao-quitacao
+
+---
+
+# Engineering Principles
+
+- Clean Code
+- SOLID
+- Separation of Concerns
+- Reusable Components
+- Maintainability
+- Scalability
+- Low Coupling
+- High Cohesion
+- Continuous Improvement
+
+---
+
+# Continuous Learning
+
+Currently improving knowledge in:
+
+- REST Assured
+- GitHub Actions
+- Docker
+- Allure Reports
+- CI/CD
+- Software Quality Engineering
+- Test Framework Design
+
+---
+
+# GitHub Activity
 
 <p align="center">
 
-![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
-![Playwright](https://img.shields.io/badge/Playwright-Automation-green?style=for-the-badge&logo=playwright)
-![JUnit](https://img.shields.io/badge/JUnit-5-red?style=for-the-badge)
-![AssertJ](https://img.shields.io/badge/AssertJ-Assertions-yellow?style=for-the-badge)
-![SOAP](https://img.shields.io/badge/API-SOAP-purple?style=for-the-badge)
-![SQL Server](https://img.shields.io/badge/SQL_Server-Database-red?style=for-the-badge)
-![Maven](https://img.shields.io/badge/Maven-Build-blue?style=for-the-badge&logo=apachemaven)
-![Git](https://img.shields.io/badge/Git-VersionControl-black?style=for-the-badge&logo=git)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=vanessalimaQA&show_icons=true&theme=github_dark&hide_border=true"/>
+
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vanessalimaQA&layout=compact&theme=github_dark&hide_border=true"/>
 
 </p>
 
 ---
 
-# 📌 Sobre o Projeto
+# Professional Goal
 
-Este projeto demonstra a construção de um framework profissional de automação de testes utilizando Java e Playwright, aplicando princípios de organização, reutilização de código e arquitetura escalável.
-
-O framework contempla automação Web, integração com serviços SOAP, manipulação de XML, consultas em banco SQL Server, validações de regras de negócio, captura automática de evidências e separação clara das responsabilidades entre as camadas.
-
-Seu objetivo é servir como um framework reutilizável para projetos corporativos de automação de testes.
+Contribute to software quality by designing scalable automation frameworks, improving testing processes and supporting reliable software delivery through automation and continuous improvement.
 
 ---
 
-# ✨ Principais Funcionalidades
+# Connect
 
-- ✅ Automação Web com Playwright
-- ✅ Arquitetura Page Object Model
-- ✅ Flow Layer
-- ✅ Integração SOAP
-- ✅ XML Builder
-- ✅ XML Parser
-- ✅ Repository Pattern
-- ✅ Banco de Dados SQL Server
-- ✅ Captura Automática de Screenshots
-- ✅ Configuração por Properties
-- ✅ Framework Escalável
-- ✅ Estrutura preparada para CI/CD
-
----
-
-# 🏗 Arquitetura
-
-```
-                 TESTS
-                    │
-      ┌─────────────┴─────────────┐
-      ▼                           ▼
- Web Tests                  Unit Tests
-      │
-      ▼
-    Flow
-      │
-      ▼
-    Pages
-      │
-      ▼
- Playwright
-      │
-      ▼
- SOAP Services
-      │
-      ▼
-   XML Parser
-      │
-      ▼
- Repository
-      │
-      ▼
- SQL Server
-```
-
----
-
-# 📂 Estrutura do Projeto
-
-```
-automacao-quitacao
-│
-├── docs/
-├── evidencias/
-├── scripts/
-├── src/
-│   ├── main/
-│   │   ├── builder/
-│   │   ├── client/
-│   │   ├── config/
-│   │   ├── database/
-│   │   ├── factory/
-│   │   ├── flow/
-│   │   ├── locators/
-│   │   ├── model/
-│   │   ├── pages/
-│   │   ├── parser/
-│   │   ├── repository/
-│   │   ├── request/
-│   │   ├── response/
-│   │   ├── service/
-│   │   ├── utils/
-│   │   └── validator/
-│   │
-│   └── resources/
-│
-└── pom.xml
-```
-
----
-
-# 📸 Evidências
-
-As execuções geram automaticamente screenshots para auxiliar na análise dos testes.
-
-```
-evidencias/
-
-✔ Login
-
-✔ Fluxo de Quitação
-
-✔ Screenshots Automáticos
-```
-
----
-
-# ▶ Como Executar
-
-## Executar todos os testes
-
-```bash
-mvn clean test
-```
-
-## Executar teste Web
-
-```bash
-mvn -Dtest=QuitacaoWebTest test
-```
-
-## Executar Builder
-
-```bash
-mvn -Dtest=SimularQuitacaoBuilderTest test
-```
-
-## Executar Service
-
-```bash
-mvn -Dtest=SimularQuitacaoServiceTest test
-```
-
----
-
-# 🛠 Tecnologias
-
-- Java 21
-- Playwright
-- JUnit 5
-- AssertJ
-- SOAP
-- SQL Server
-- Maven
-- Git
-- GitHub
-- PowerShell
-
----
-
-# 🚀 Roadmap
-
-## ✔ Concluído
-
-- Playwright
-- SOAP
-- XML Builder
-- XML Parser
-- Repository Pattern
-- Validator Layer
-- SQL Server
-- Captura de Evidências
-- GitHub
-
-## ⏳ Próximas Evoluções
-
-- REST Assured
-- Jackson
-- Faker
-- Apache POI
-- Allure Reports
-- GitHub Actions
-- Docker
-- Execução Paralela
-- Integração Contínua
-
----
-
-# 👩‍💻 Autora
-
-## Vanessa Lima
-
-QA Automation Engineer em formação, apaixonada por Qualidade de Software, Automação de Testes e Arquitetura de Frameworks.
-
-### Tecnologias
-
-- Java
-- Playwright
-- Selenium
-- SOAP
-- SQL Server
-- JUnit
-- Maven
-- Git
-- GitHub
-
-### Contato
-
-🔗 LinkedIn
+💼 LinkedIn
 
 https://www.linkedin.com/in/vanessa-ads/
 
-🔗 GitHub
+💻 GitHub
 
 https://github.com/vanessalimaQA
 
 ---
 
-# ⭐ Contribuições
+<div align="center">
 
-Este projeto foi desenvolvido para fins de estudo, evolução profissional e construção de portfólio em QA Automation.
+### "Quality is built through engineering, collaboration and continuous improvement."
 
-Contribuições, sugestões e melhorias são sempre bem-vindas.
-
----
-
-# 📄 Licença
-
-Este projeto está licenciado sob a licença MIT.
+</div>
