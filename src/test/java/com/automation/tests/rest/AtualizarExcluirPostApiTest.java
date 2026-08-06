@@ -1,6 +1,7 @@
 package com.automation.tests.rest;
 
 import com.automation.integrations.rest.client.ApiClient;
+import com.automation.integrations.rest.config.ApiConfig;
 import com.automation.integrations.rest.request.CriarPostRequest;
 import com.automation.integrations.rest.response.CriarPostResponse;
 import io.restassured.response.Response;
@@ -12,8 +13,9 @@ class AtualizarExcluirPostApiTest {
 
     @Test
     void deveAtualizarPostComSucesso() {
+
         ApiClient apiClient =
-                new ApiClient("https://jsonplaceholder.typicode.com");
+                new ApiClient(ApiConfig.baseUrl());
 
         CriarPostRequest request = CriarPostRequest.builder()
                 .title("Post atualizado")
@@ -45,8 +47,9 @@ class AtualizarExcluirPostApiTest {
 
     @Test
     void deveExcluirPostComSucesso() {
+
         ApiClient apiClient =
-                new ApiClient("https://jsonplaceholder.typicode.com");
+                new ApiClient(ApiConfig.baseUrl());
 
         Response response =
                 apiClient.delete("/posts/1");

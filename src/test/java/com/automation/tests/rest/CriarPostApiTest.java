@@ -1,6 +1,7 @@
 package com.automation.tests.rest;
 
 import com.automation.integrations.rest.client.ApiClient;
+import com.automation.integrations.rest.config.ApiConfig;
 import com.automation.integrations.rest.request.CriarPostRequest;
 import com.automation.integrations.rest.response.CriarPostResponse;
 import io.restassured.response.Response;
@@ -12,8 +13,9 @@ class CriarPostApiTest {
 
     @Test
     void deveCriarPostComSucesso() {
+
         ApiClient apiClient =
-                new ApiClient("https://jsonplaceholder.typicode.com");
+                new ApiClient(ApiConfig.baseUrl());
 
         CriarPostRequest request = CriarPostRequest.builder()
                 .title("Automação de testes")

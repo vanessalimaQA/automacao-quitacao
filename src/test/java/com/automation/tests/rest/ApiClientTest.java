@@ -1,6 +1,7 @@
 package com.automation.tests.rest;
 
 import com.automation.integrations.rest.client.ApiClient;
+import com.automation.integrations.rest.config.ApiConfig;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +11,9 @@ class ApiClientTest {
 
     @Test
     void deveRealizarGetComSucesso() {
+
         ApiClient apiClient =
-                new ApiClient("https://jsonplaceholder.typicode.com");
+                new ApiClient(ApiConfig.baseUrl());
 
         Response response =
                 apiClient.get("/users/1");
