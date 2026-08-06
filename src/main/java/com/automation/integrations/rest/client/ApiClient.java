@@ -1,5 +1,6 @@
 package com.automation.integrations.rest.client;
 
+import com.automation.integrations.rest.config.RequestSpecFactory;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -10,39 +11,53 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
 
-    private final String baseUrl;
+    private final RequestSpecification requestSpecification;
 
     public ApiClient(String baseUrl) {
-        this.baseUrl = baseUrl;
+        this.requestSpecification =
+                RequestSpecFactory.create(baseUrl);
     }
 
     private RequestSpecification request() {
         return given()
-                .baseUri(baseUrl)
-                .contentType("application/json")
-                .accept("application/json")
+                .spec(requestSpecification)
                 .log()
                 .ifValidationFails(LogDetail.ALL);
     }
 
-    private RequestSpecification request(Map<String, String> headers) {
-        return request().headers(headers);
+    private RequestSpecification request(
+            Map<String, String> headers
+    ) {
+        return request()
+                .headers(headers);
     }
 
-    private RequestSpecification authenticatedRequest(String token) {
+    private RequestSpecification authenticatedRequest(
+            String token
+    ) {
         return request()
-                .header("Authorization", "Bearer " + token);
+                .header(
+                        "Authorization",
+                        "Bearer " + token
+                );
     }
 
     public Response get(String endpoint) {
         return extractResponse(
-                request().when().get(endpoint)
+                request()
+                        .when()
+                        .get(endpoint)
         );
     }
 
-    public Response get(String endpoint, Map<String, String> headers) {
+    public Response get(
+            String endpoint,
+            Map<String, String> headers
+    ) {
         return extractResponse(
-                request(headers).when().get(endpoint)
+                request(headers)
+                        .when()
+                        .get(endpoint)
         );
     }
 
@@ -70,7 +85,10 @@ public class ApiClient {
         );
     }
 
-    public Response getAuthenticated(String endpoint, String token) {
+    public Response getAuthenticated(
+            String endpoint,
+            String token
+    ) {
         return extractResponse(
                 authenticatedRequest(token)
                         .when()
@@ -78,7 +96,10 @@ public class ApiClient {
         );
     }
 
-    public Response post(String endpoint, Object body) {
+    public Response post(
+            String endpoint,
+            Object body
+    ) {
         return extractResponse(
                 request()
                         .body(body)
@@ -113,7 +134,10 @@ public class ApiClient {
         );
     }
 
-    public Response put(String endpoint, Object body) {
+    public Response put(
+            String endpoint,
+            Object body
+    ) {
         return extractResponse(
                 request()
                         .body(body)
@@ -130,7 +154,9 @@ public class ApiClient {
         );
     }
 
-    private Response extractResponse(Response response) {
+    private Response extractResponse(
+            Response response
+    ) {
         return response
                 .then()
                 .log()
