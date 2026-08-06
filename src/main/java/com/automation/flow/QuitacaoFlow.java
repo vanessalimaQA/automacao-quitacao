@@ -1,8 +1,8 @@
 package com.automation.flow;
 
 import com.automation.pages.QuitacaoPage;
-import com.automation.response.SimularQuitacaoResponse;
-import com.automation.service.SimularQuitacaoService;
+import com.automation.integrations.soap.response.SimularQuitacaoResponse;
+import com.automation.integrations.soap.service.SimularQuitacaoService;
 import com.microsoft.playwright.Page;
 
 import java.util.Objects;
@@ -14,13 +14,13 @@ public final class QuitacaoFlow {
 
     /**
      * Construtor usado pelos testes Web.
-     * Não cria nem carrega configurações SOAP.
+     * NÃ£o cria nem carrega configuraÃ§Ãµes SOAP.
      */
     public QuitacaoFlow(Page page) {
         this.quitacaoPage = new QuitacaoPage(
                 Objects.requireNonNull(
                         page,
-                        "A Page não pode ser nula."
+                        "A Page nÃ£o pode ser nula."
                 )
         );
 
@@ -28,7 +28,7 @@ public final class QuitacaoFlow {
     }
 
     /**
-     * Construtor usado quando o fluxo também precisa chamar SOAP.
+     * Construtor usado quando o fluxo tambÃ©m precisa chamar SOAP.
      */
     public QuitacaoFlow(
             QuitacaoPage quitacaoPage,
@@ -36,12 +36,12 @@ public final class QuitacaoFlow {
     ) {
         this.quitacaoPage = Objects.requireNonNull(
                 quitacaoPage,
-                "A QuitacaoPage não pode ser nula."
+                "A QuitacaoPage nÃ£o pode ser nula."
         );
 
         this.simulacaoService = Objects.requireNonNull(
                 simulacaoService,
-                "A SimularQuitacaoService não pode ser nula."
+                "A SimularQuitacaoService nÃ£o pode ser nula."
         );
     }
 
@@ -73,8 +73,9 @@ public final class QuitacaoFlow {
     private void validarServiceSoapConfigurada() {
         if (simulacaoService == null) {
             throw new IllegalStateException(
-                    "A SimularQuitacaoService não foi configurada para esta Flow."
+                    "A SimularQuitacaoService nÃ£o foi configurada para esta Flow."
             );
         }
     }
 }
+

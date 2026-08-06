@@ -4,7 +4,7 @@ package com.automation.config;
 public final class BrowserConfig {
 
     private BrowserConfig() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static String getBrowser() {

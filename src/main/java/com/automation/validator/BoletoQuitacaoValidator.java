@@ -9,13 +9,13 @@ import java.util.Objects;
 public final class BoletoQuitacaoValidator {
 
     private BoletoQuitacaoValidator() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static void validar(BoletoQuitacao boleto) {
         Objects.requireNonNull(
                 boleto,
-                "O boleto não pode ser nulo."
+                "O boleto nÃ£o pode ser nulo."
         );
 
         validarIdBoleto(boleto.idBoleto());
@@ -55,7 +55,7 @@ public final class BoletoQuitacaoValidator {
 
         if (!statusValido) {
             throw new IllegalStateException(
-                    "Status do boleto inválido: " + status
+                    "Status do boleto invÃ¡lido: " + status
             );
         }
     }

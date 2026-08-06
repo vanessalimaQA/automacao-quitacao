@@ -1,10 +1,10 @@
 package com.automation.tests.service;
 
-import com.automation.builder.SimularQuitacaoBuilder;
-import com.automation.client.SoapClientContract;
-import com.automation.parser.SoapResponseParser;
-import com.automation.response.SimularQuitacaoResponse;
-import com.automation.service.SimularQuitacaoService;
+import com.automation.integrations.soap.builder.SimularQuitacaoBuilder;
+import com.automation.integrations.soap.client.SoapClientContract;
+import com.automation.integrations.soap.parser.SoapResponseParser;
+import com.automation.integrations.soap.response.SimularQuitacaoResponse;
+import com.automation.integrations.soap.service.SimularQuitacaoService;
 import org.junit.jupiter.api.Test;
 
 import javax.net.ssl.SSLSession;
@@ -41,7 +41,7 @@ class SimularQuitacaoServiceTest {
                             <con:SimularQuitacaoAntecipadaResult>
                                 <con:CodRetorno>0</con:CodRetorno>
                                 <con:DescricaoRetorno>
-                                    Simulação realizada com sucesso
+                                    SimulaÃ§Ã£o realizada com sucesso
                                 </con:DescricaoRetorno>
                                 <con:ValorMinimo>450.30</con:ValorMinimo>
                                 <con:ValorTotal>1580.90</con:ValorTotal>
@@ -85,7 +85,7 @@ class SimularQuitacaoServiceTest {
 
         assertThat(response.getDescricaoRetorno())
                 .isEqualTo(
-                        "Simulação realizada com sucesso"
+                        "SimulaÃ§Ã£o realizada com sucesso"
                 );
 
         assertThat(response.getValorMinimo())
@@ -121,7 +121,7 @@ class SimularQuitacaoServiceTest {
                         IllegalStateException.class
                 )
                 .hasMessageContaining(
-                        "status HTTP inválido: 500"
+                        "status HTTP invÃ¡lido: 500"
                 );
     }
 

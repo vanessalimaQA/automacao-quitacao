@@ -12,7 +12,7 @@ public abstract class BasePage {
     protected BasePage(Page page) {
         this.page = Objects.requireNonNull(
                 page,
-                "A Page do Playwright não pode ser nula."
+                "A Page do Playwright nÃ£o pode ser nula."
         );
     }
 

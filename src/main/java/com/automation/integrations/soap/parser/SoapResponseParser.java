@@ -1,6 +1,6 @@
-package com.automation.parser;
+package com.automation.integrations.soap.parser;
 
-import com.automation.response.SimularQuitacaoResponse;
+import com.automation.integrations.soap.response.SimularQuitacaoResponse;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -104,7 +104,7 @@ public final class SoapResponseParser {
             String mensagem = faults.item(0).getTextContent().trim();
 
             throw new IllegalStateException(
-                    "O serviço SOAP retornou Fault: " + mensagem
+                    "O serviÃ§o SOAP retornou Fault: " + mensagem
             );
         }
     }
@@ -120,7 +120,7 @@ public final class SoapResponseParser {
 
         if (elementos.getLength() == 0) {
             throw new IllegalStateException(
-                    "Elemento não encontrado no XML: " + nomeElemento
+                    "Elemento nÃ£o encontrado no XML: " + nomeElemento
             );
         }
 
@@ -148,7 +148,7 @@ public final class SoapResponseParser {
 
         } catch (NumberFormatException e) {
             throw new IllegalStateException(
-                    "Valor inteiro inválido em "
+                    "Valor inteiro invÃ¡lido em "
                             + nomeElemento
                             + ": "
                             + valor,
@@ -170,7 +170,7 @@ public final class SoapResponseParser {
 
         } catch (NumberFormatException e) {
             throw new IllegalStateException(
-                    "Valor decimal inválido em "
+                    "Valor decimal invÃ¡lido em "
                             + nomeElemento
                             + ": "
                             + valor,
@@ -182,7 +182,7 @@ public final class SoapResponseParser {
     private void validarXml(String xml) {
         if (xml == null || xml.isBlank()) {
             throw new IllegalArgumentException(
-                    "O XML da resposta SOAP não pode ser vazio."
+                    "O XML da resposta SOAP nÃ£o pode ser vazio."
             );
         }
     }

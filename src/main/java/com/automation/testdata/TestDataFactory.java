@@ -60,13 +60,13 @@ public final class TestDataFactory {
     ) {
         if (minimo < 0) {
             throw new IllegalArgumentException(
-                    "O valor mínimo não pode ser negativo."
+                    "O valor mÃ­nimo nÃ£o pode ser negativo."
             );
         }
 
         if (maximo <= minimo) {
             throw new IllegalArgumentException(
-                    "O valor máximo deve ser maior que o mínimo."
+                    "O valor mÃ¡ximo deve ser maior que o mÃ­nimo."
             );
         }
 

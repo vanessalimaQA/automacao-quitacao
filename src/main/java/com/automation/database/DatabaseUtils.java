@@ -8,7 +8,7 @@ import java.sql.Statement;
 public final class DatabaseUtils {
 
     private DatabaseUtils() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static void fechar(ResultSet resultSet) {
@@ -50,7 +50,7 @@ public final class DatabaseUtils {
             connection.close();
         } catch (SQLException e) {
             throw new IllegalStateException(
-                    "Erro ao fechar a conexão com o banco.",
+                    "Erro ao fechar a conexÃ£o com o banco.",
                     e
             );
         }

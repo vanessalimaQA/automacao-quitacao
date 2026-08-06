@@ -1,11 +1,11 @@
-package com.automation.service;
+package com.automation.integrations.soap.service;
 
-import com.automation.builder.SimularQuitacaoBuilder;
-import com.automation.client.SoapClient;
-import com.automation.client.SoapClientContract;
+import com.automation.integrations.soap.builder.SimularQuitacaoBuilder;
+import com.automation.integrations.soap.client.SoapClient;
+import com.automation.integrations.soap.client.SoapClientContract;
 import com.automation.config.SoapConfig;
-import com.automation.parser.SoapResponseParser;
-import com.automation.response.SimularQuitacaoResponse;
+import com.automation.integrations.soap.parser.SoapResponseParser;
+import com.automation.integrations.soap.response.SimularQuitacaoResponse;
 
 import java.net.http.HttpResponse;
 import java.util.Objects;
@@ -37,27 +37,27 @@ public final class SimularQuitacaoService {
     ) {
         this.soapClient = Objects.requireNonNull(
                 soapClient,
-                "O SoapClient não pode ser nulo."
+                "O SoapClient nÃ£o pode ser nulo."
         );
 
         this.builder = Objects.requireNonNull(
                 builder,
-                "O Builder não pode ser nulo."
+                "O Builder nÃ£o pode ser nulo."
         );
 
         this.responseParser = Objects.requireNonNull(
                 responseParser,
-                "O SoapResponseParser não pode ser nulo."
+                "O SoapResponseParser nÃ£o pode ser nulo."
         );
 
         this.endpoint = validarTexto(
                 endpoint,
-                "O endpoint SOAP não pode ser vazio."
+                "O endpoint SOAP nÃ£o pode ser vazio."
         );
 
         this.soapAction = validarTexto(
                 soapAction,
-                "A SOAP Action não pode ser vazia."
+                "A SOAP Action nÃ£o pode ser vazia."
         );
     }
 
@@ -92,14 +92,14 @@ public final class SimularQuitacaoService {
     ) {
         Objects.requireNonNull(
                 httpResponse,
-                "A resposta HTTP não pode ser nula."
+                "A resposta HTTP nÃ£o pode ser nula."
         );
 
         int statusCode = httpResponse.statusCode();
 
         if (statusCode < 200 || statusCode >= 300) {
             throw new IllegalStateException(
-                    "A simulação SOAP retornou status HTTP inválido: "
+                    "A simulaÃ§Ã£o SOAP retornou status HTTP invÃ¡lido: "
                             + statusCode
             );
         }

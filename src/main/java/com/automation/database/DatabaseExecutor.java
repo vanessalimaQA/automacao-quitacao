@@ -82,7 +82,7 @@ public final class DatabaseExecutor {
     ) {
         if (sql == null || sql.isBlank()) {
             throw new IllegalArgumentException(
-                    "O SQL não pode ser vazio."
+                    "O SQL nÃ£o pode ser vazio."
             );
         }
 
@@ -97,7 +97,7 @@ public final class DatabaseExecutor {
 
         } catch (SQLException e) {
             throw new IllegalStateException(
-                    "Erro ao executar atualização no banco de dados.",
+                    "Erro ao executar atualizaÃ§Ã£o no banco de dados.",
                     e
             );
         }
@@ -125,13 +125,13 @@ public final class DatabaseExecutor {
     ) {
         if (sql == null || sql.isBlank()) {
             throw new IllegalArgumentException(
-                    "O SQL não pode ser vazio."
+                    "O SQL nÃ£o pode ser vazio."
             );
         }
 
         if (rowMapper == null) {
             throw new IllegalArgumentException(
-                    "O RowMapper não pode ser nulo."
+                    "O RowMapper nÃ£o pode ser nulo."
             );
         }
     }

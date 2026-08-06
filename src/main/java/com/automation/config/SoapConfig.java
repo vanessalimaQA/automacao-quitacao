@@ -3,7 +3,7 @@ package com.automation.config;
 public final class SoapConfig {
 
     private SoapConfig() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static String getEndpointConta() {

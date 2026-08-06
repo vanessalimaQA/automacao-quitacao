@@ -1,6 +1,6 @@
 package com.automation.tests.builder;
 
-import com.automation.builder.SimularQuitacaoBuilder;
+import com.automation.integrations.soap.builder.SimularQuitacaoBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

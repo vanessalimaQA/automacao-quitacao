@@ -1,4 +1,4 @@
-package com.automation.client;
+package com.automation.integrations.soap.client;
 
 import java.io.IOException;
 import java.net.URI;
@@ -33,7 +33,7 @@ public final class SoapClient implements SoapClientContract {
     SoapClient(HttpClient httpClient) {
         this.httpClient = Objects.requireNonNull(
                 httpClient,
-                "O HttpClient não pode ser nulo."
+                "O HttpClient nÃ£o pode ser nulo."
         );
     }
 
@@ -61,7 +61,7 @@ public final class SoapClient implements SoapClientContract {
 
         } catch (IOException e) {
             throw new IllegalStateException(
-                    "Erro de comunicação com o endpoint SOAP: "
+                    "Erro de comunicaÃ§Ã£o com o endpoint SOAP: "
                             + endpoint,
                     e
             );
@@ -70,7 +70,7 @@ public final class SoapClient implements SoapClientContract {
             Thread.currentThread().interrupt();
 
             throw new IllegalStateException(
-                    "A requisição SOAP foi interrompida.",
+                    "A requisiÃ§Ã£o SOAP foi interrompida.",
                     e
             );
         }
@@ -111,7 +111,7 @@ public final class SoapClient implements SoapClientContract {
 
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(
-                    "Endpoint SOAP inválido: " + endpoint,
+                    "Endpoint SOAP invÃ¡lido: " + endpoint,
                     e
             );
         }
@@ -123,13 +123,13 @@ public final class SoapClient implements SoapClientContract {
     ) {
         if (endpoint == null || endpoint.isBlank()) {
             throw new IllegalArgumentException(
-                    "O endpoint SOAP não pode ser vazio."
+                    "O endpoint SOAP nÃ£o pode ser vazio."
             );
         }
 
         if (xml == null || xml.isBlank()) {
             throw new IllegalArgumentException(
-                    "O XML SOAP não pode ser vazio."
+                    "O XML SOAP nÃ£o pode ser vazio."
             );
         }
     }

@@ -15,7 +15,7 @@ public final class ConfigReader {
     }
 
     private ConfigReader() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     private static void carregarConfiguracoes() {
@@ -28,7 +28,7 @@ public final class ConfigReader {
 
             if (input == null) {
                 throw new IllegalStateException(
-                        "Arquivo de configuração não encontrado: " + nomeArquivo
+                        "Arquivo de configuraÃ§Ã£o nÃ£o encontrado: " + nomeArquivo
                 );
             }
 
@@ -36,7 +36,7 @@ public final class ConfigReader {
 
         } catch (IOException e) {
             throw new IllegalStateException(
-                    "Erro ao carregar o arquivo de configuração: " + nomeArquivo,
+                    "Erro ao carregar o arquivo de configuraÃ§Ã£o: " + nomeArquivo,
                     e
             );
         }
@@ -47,7 +47,7 @@ public final class ConfigReader {
 
         if (valor == null || valor.isBlank()) {
             throw new IllegalStateException(
-                    "Configuração obrigatória não encontrada: " + chave
+                    "ConfiguraÃ§Ã£o obrigatÃ³ria nÃ£o encontrada: " + chave
             );
         }
 
@@ -73,7 +73,7 @@ public final class ConfigReader {
             return valorJVM;
         }
 
-        // 2. Variável de ambiente: VIEWPORT_WIDTH, DB_PASSWORD etc.
+        // 2. VariÃ¡vel de ambiente: VIEWPORT_WIDTH, DB_PASSWORD etc.
         String nomeVariavelAmbiente = converterParaVariavelAmbiente(chave);
         String valorAmbiente = System.getenv(nomeVariavelAmbiente);
 

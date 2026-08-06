@@ -1,4 +1,4 @@
-package com.automation.client;
+package com.automation.integrations.soap.client;
 
 import java.net.http.HttpResponse;
 

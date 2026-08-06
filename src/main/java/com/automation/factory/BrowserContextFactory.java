@@ -7,7 +7,7 @@ import com.microsoft.playwright.BrowserContext;
 public final class BrowserContextFactory {
 
     private BrowserContextFactory() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static BrowserContext criarContexto(Browser browser) {

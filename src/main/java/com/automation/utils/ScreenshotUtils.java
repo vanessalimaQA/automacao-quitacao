@@ -15,7 +15,7 @@ public final class ScreenshotUtils {
             "target/screenshots";
 
     private ScreenshotUtils() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static void capturar(Page page, String nomeTeste) {

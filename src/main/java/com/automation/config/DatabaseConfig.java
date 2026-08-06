@@ -3,7 +3,7 @@ package com.automation.config;
 public final class DatabaseConfig {
 
     private DatabaseConfig() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static String getUrl() {

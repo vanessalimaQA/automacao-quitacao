@@ -1,4 +1,4 @@
-package com.automation.response;
+package com.automation.integrations.soap.response;
 
 import java.math.BigDecimal;
 

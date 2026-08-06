@@ -19,7 +19,7 @@ public class ConfigReader {
                 .getResourceAsStream(nomeArquivo)) {
 
             if (inputStream == null) {
-                throw new RuntimeException("Arquivo não encontrado: " + nomeArquivo);
+                throw new RuntimeException("Arquivo nÃ£o encontrado: " + nomeArquivo);
             }
 
             properties.load(inputStream);

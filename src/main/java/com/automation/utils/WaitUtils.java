@@ -9,17 +9,17 @@ import java.util.Objects;
 public final class WaitUtils {
 
     private WaitUtils() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static void aguardarPaginaCarregar(Page page) {
-        Objects.requireNonNull(page, "A Page não pode ser nula.");
+        Objects.requireNonNull(page, "A Page nÃ£o pode ser nula.");
 
         page.waitForLoadState(LoadState.DOMCONTENTLOADED);
     }
 
     public static void aguardarRedeFicarOciosa(Page page) {
-        Objects.requireNonNull(page, "A Page não pode ser nula.");
+        Objects.requireNonNull(page, "A Page nÃ£o pode ser nula.");
 
         page.waitForLoadState(LoadState.NETWORKIDLE);
     }
@@ -58,11 +58,11 @@ public final class WaitUtils {
             Page page,
             String trechoUrl
     ) {
-        Objects.requireNonNull(page, "A Page não pode ser nula.");
+        Objects.requireNonNull(page, "A Page nÃ£o pode ser nula.");
 
         if (trechoUrl == null || trechoUrl.isBlank()) {
             throw new IllegalArgumentException(
-                    "O trecho da URL não pode ser vazio."
+                    "O trecho da URL nÃ£o pode ser vazio."
             );
         }
 
@@ -75,11 +75,11 @@ public final class WaitUtils {
             Page page,
             String seletor
     ) {
-        Objects.requireNonNull(page, "A Page não pode ser nula.");
+        Objects.requireNonNull(page, "A Page nÃ£o pode ser nula.");
 
         if (seletor == null || seletor.isBlank()) {
             throw new IllegalArgumentException(
-                    "O seletor não pode ser vazio."
+                    "O seletor nÃ£o pode ser vazio."
             );
         }
     }

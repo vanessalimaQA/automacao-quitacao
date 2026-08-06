@@ -1,4 +1,4 @@
-package com.automation.request;
+package com.automation.integrations.soap.request;
 
 public record SimularQuitacaoRequest(
         String idConta
@@ -7,7 +7,7 @@ public record SimularQuitacaoRequest(
     public SimularQuitacaoRequest {
         if (idConta == null || idConta.isBlank()) {
             throw new IllegalArgumentException(
-                    "O IdConta não pode ser vazio."
+                    "O IdConta nÃ£o pode ser vazio."
             );
         }
 

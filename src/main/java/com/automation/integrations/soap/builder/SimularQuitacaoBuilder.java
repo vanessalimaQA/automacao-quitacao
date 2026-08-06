@@ -1,4 +1,4 @@
-package com.automation.builder;
+package com.automation.integrations.soap.builder;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,12 +14,12 @@ public final class SimularQuitacaoBuilder {
 
         Objects.requireNonNull(
                 idConta,
-                "O IdConta não pode ser nulo."
+                "O IdConta nÃ£o pode ser nulo."
         );
 
         if (idConta.isBlank()) {
             throw new IllegalArgumentException(
-                    "O IdConta não pode ser vazio."
+                    "O IdConta nÃ£o pode ser vazio."
             );
         }
 
@@ -29,7 +29,7 @@ public final class SimularQuitacaoBuilder {
 
             if (arquivoXml == null) {
                 throw new IllegalStateException(
-                        "Template SOAP não encontrado: " + TEMPLATE
+                        "Template SOAP nÃ£o encontrado: " + TEMPLATE
                 );
             }
 

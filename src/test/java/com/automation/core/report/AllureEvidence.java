@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 public final class AllureEvidence {
 
     private AllureEvidence() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static void anexarTexto(

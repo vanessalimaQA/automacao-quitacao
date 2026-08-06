@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public final class DatabaseConnection {
 
     private DatabaseConnection() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static Connection abrir() {
@@ -24,7 +24,7 @@ public final class DatabaseConnection {
 
         } catch (SQLException e) {
             throw new IllegalStateException(
-                    "Não foi possível conectar ao SQL Server.",
+                    "NÃ£o foi possÃ­vel conectar ao SQL Server.",
                     e
             );
         }
@@ -36,7 +36,7 @@ public final class DatabaseConnection {
 
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException(
-                    "Driver JDBC do SQL Server não encontrado.",
+                    "Driver JDBC do SQL Server nÃ£o encontrado.",
                     e
             );
         }

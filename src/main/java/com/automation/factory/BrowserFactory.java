@@ -13,7 +13,7 @@ public final class BrowserFactory {
     private static final String CHROMIUM = "chromium";
 
     private BrowserFactory() {
-        // Impede instanciação.
+        // Impede instanciaÃ§Ã£o.
     }
 
     public static Browser criarBrowser(Playwright playwright) {
@@ -44,7 +44,7 @@ public final class BrowserFactory {
 
             default ->
                     throw new IllegalArgumentException(
-                            "Browser não suportado: " + browserSelecionado
+                            "Browser nÃ£o suportado: " + browserSelecionado
                     );
         };
     }
