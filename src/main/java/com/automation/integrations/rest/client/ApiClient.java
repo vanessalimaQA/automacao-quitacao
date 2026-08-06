@@ -1,10 +1,11 @@
 package com.automation.integrations.rest.client;
 
+import com.automation.core.exceptions.ApiException;
 import com.automation.integrations.rest.config.RequestSpecFactory;
+import com.automation.integrations.rest.config.ResponseSpecFactory;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import com.automation.integrations.rest.config.ResponseSpecFactory;
 
 import java.util.Map;
 
@@ -15,8 +16,7 @@ public class ApiClient {
     private final RequestSpecification requestSpecification;
 
     public ApiClient(String baseUrl) {
-        this.requestSpecification =
-                RequestSpecFactory.create(baseUrl);
+        this.requestSpecification = RequestSpecFactory.create(baseUrl);
     }
 
     private RequestSpecification request() {
@@ -26,39 +26,24 @@ public class ApiClient {
                 .ifValidationFails(LogDetail.ALL);
     }
 
-    private RequestSpecification request(
-            Map<String, String> headers
-    ) {
-        return request()
-                .headers(headers);
+    private RequestSpecification request(Map<String, String> headers) {
+        return request().headers(headers);
     }
 
-    private RequestSpecification authenticatedRequest(
-            String token
-    ) {
+    private RequestSpecification authenticatedRequest(String token) {
         return request()
-                .header(
-                        "Authorization",
-                        "Bearer " + token
-                );
+                .header("Authorization", "Bearer " + token);
     }
 
     public Response get(String endpoint) {
-        return extractResponse(
-                request()
-                        .when()
-                        .get(endpoint)
+        return validateResponse(
+                request().when().get(endpoint)
         );
     }
 
-    public Response get(
-            String endpoint,
-            Map<String, String> headers
-    ) {
-        return extractResponse(
-                request(headers)
-                        .when()
-                        .get(endpoint)
+    public Response get(String endpoint, Map<String, String> headers) {
+        return validateResponse(
+                request(headers).when().get(endpoint)
         );
     }
 
@@ -66,7 +51,7 @@ public class ApiClient {
             String endpoint,
             Map<String, ?> queryParams
     ) {
-        return extractResponse(
+        return validateResponse(
                 request()
                         .queryParams(queryParams)
                         .when()
@@ -78,7 +63,7 @@ public class ApiClient {
             String endpoint,
             Map<String, ?> pathParams
     ) {
-        return extractResponse(
+        return validateResponse(
                 request()
                         .pathParams(pathParams)
                         .when()
@@ -90,18 +75,15 @@ public class ApiClient {
             String endpoint,
             String token
     ) {
-        return extractResponse(
+        return validateResponse(
                 authenticatedRequest(token)
                         .when()
                         .get(endpoint)
         );
     }
 
-    public Response post(
-            String endpoint,
-            Object body
-    ) {
-        return extractResponse(
+    public Response post(String endpoint, Object body) {
+        return validateResponse(
                 request()
                         .body(body)
                         .when()
@@ -114,7 +96,7 @@ public class ApiClient {
             Object body,
             Map<String, String> headers
     ) {
-        return extractResponse(
+        return validateResponse(
                 request(headers)
                         .body(body)
                         .when()
@@ -127,7 +109,7 @@ public class ApiClient {
             Object body,
             String token
     ) {
-        return extractResponse(
+        return validateResponse(
                 authenticatedRequest(token)
                         .body(body)
                         .when()
@@ -135,11 +117,8 @@ public class ApiClient {
         );
     }
 
-    public Response put(
-            String endpoint,
-            Object body
-    ) {
-        return extractResponse(
+    public Response put(String endpoint, Object body) {
+        return validateResponse(
                 request()
                         .body(body)
                         .when()
@@ -148,14 +127,24 @@ public class ApiClient {
     }
 
     public Response delete(String endpoint) {
-        return extractResponse(
+        return validateResponse(
                 request()
                         .when()
                         .delete(endpoint)
         );
     }
 
-    private Response extractResponse(Response response) {
+    private Response validateResponse(Response response) {
+        int statusCode = response.statusCode();
+
+        if (statusCode >= 400) {
+            throw new ApiException(
+                    "Erro ao executar requisição REST.",
+                    statusCode,
+                    response.body().asString()
+            );
+        }
+
         return response
                 .then()
                 .spec(ResponseSpecFactory.jsonResponse())
