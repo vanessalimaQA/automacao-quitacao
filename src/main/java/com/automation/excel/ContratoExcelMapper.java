@@ -10,20 +10,22 @@ public final class ContratoExcelMapper {
     }
 
     public static ContratoData mapear(Map<String, String> linha) {
-        return ContratoData.builder()
-                .contrato(linha.get("contrato"))
-                .produto(linha.get("produto"))
-                .valorDivida(
-                        Double.parseDouble(linha.get("valorDivida"))
+        ContratoData contrato = new ContratoData();
+
+        contrato.setContrato(linha.get("contrato"));
+        contrato.setProduto(linha.get("produto"));
+        contrato.setValorDivida(
+                Double.parseDouble(linha.get("valorDivida"))
+        );
+        contrato.setDesconto(
+                Double.parseDouble(linha.get("desconto"))
+        );
+        contrato.setValorQuitacaoEsperado(
+                Double.parseDouble(
+                        linha.get("valorQuitacaoEsperado")
                 )
-                .desconto(
-                        Double.parseDouble(linha.get("desconto"))
-                )
-                .valorQuitacaoEsperado(
-                        Double.parseDouble(
-                                linha.get("valorQuitacaoEsperado")
-                        )
-                )
-                .build();
+        );
+
+        return contrato;
     }
 }
