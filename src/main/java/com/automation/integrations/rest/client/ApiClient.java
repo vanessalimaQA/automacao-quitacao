@@ -4,6 +4,7 @@ import com.automation.integrations.rest.config.RequestSpecFactory;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import com.automation.integrations.rest.config.ResponseSpecFactory;
 
 import java.util.Map;
 
@@ -154,11 +155,10 @@ public class ApiClient {
         );
     }
 
-    private Response extractResponse(
-            Response response
-    ) {
+    private Response extractResponse(Response response) {
         return response
                 .then()
+                .spec(ResponseSpecFactory.jsonResponse())
                 .log()
                 .ifValidationFails(LogDetail.ALL)
                 .extract()
