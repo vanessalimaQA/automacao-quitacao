@@ -1,8 +1,7 @@
 package com.automation.tests.excel;
 
-import com.automation.excel.ContratoExcelMapper;
-import com.automation.excel.ExcelReader;
 import com.automation.model.ContratoData;
+import com.automation.testdata.ContratoDataFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -13,12 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ExcelParameterizedTest {
 
     static Stream<ContratoData> massaContratos() {
-        return ExcelReader.lerPlanilha(
-                        "massa/contratos.xlsx",
-                        "contratos"
-                )
-                .stream()
-                .map(ContratoExcelMapper::mapear);
+        return ContratoDataFactory
+                .carregarDoExcel()
+                .stream();
     }
 
     @ParameterizedTest(name = "Contrato: {0}")
