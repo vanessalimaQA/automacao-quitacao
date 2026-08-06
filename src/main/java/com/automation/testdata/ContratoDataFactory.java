@@ -5,18 +5,36 @@ import com.automation.excel.ExcelReader;
 import com.automation.model.ContratoData;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class ContratoDataFactory {
+
+    private static final Set<String> COLUNAS_OBRIGATORIAS = Set.of(
+            "contrato",
+            "produto",
+            "valorDivida",
+            "desconto",
+            "valorQuitacaoEsperado"
+    );
 
     private ContratoDataFactory() {
     }
 
     public static List<ContratoData> carregarDoExcel() {
-        return ExcelReader.lerPlanilha(
+
+        List<Map<String, String>> registros =
+                ExcelReader.lerPlanilha(
                         "massa/contratos.xlsx",
                         "contratos"
-                )
-                .stream()
+                );
+
+        ExcelReader.validarColunasObrigatorias(
+                registros,
+                COLUNAS_OBRIGATORIAS
+        );
+
+        return registros.stream()
                 .map(ContratoExcelMapper::mapear)
                 .toList();
     }
