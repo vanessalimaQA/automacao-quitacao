@@ -20,6 +20,7 @@
         <java.version>21</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- PLAYWRIGHT -->
         <playwright.version>1.54.0</playwright.version>
@@ -34,7 +35,7 @@
         <!-- HTTP / SOAP -->
         <httpclient.version>5.5.1</httpclient.version>
 
-        <!-- REST -->
+        <!-- REST ASSURED -->
         <restassured.version>5.5.6</restassured.version>
 
         <!-- JSON -->
@@ -62,7 +63,6 @@
         <dependencies>
 
             <!-- JUNIT BOM -->
-
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
@@ -109,7 +109,6 @@
         </dependency>
 
         <!-- REST ASSURED -->
-        <!-- Utilizado pela camada integrations/rest em src/main/java -->
 
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -226,8 +225,16 @@
 
                 <configuration>
 
+                    <!-- Compatibilidade com Java 21 -->
                     <useModulePath>false</useModulePath>
 
+                    <!--
+                        Testes marcados com @Tag("external")
+                        não executam na suíte principal.
+                    -->
+                    <excludedGroups>external</excludedGroups>
+
+                    <!-- ALLURE -->
                     <systemPropertyVariables>
 
                         <allure.results.directory>
