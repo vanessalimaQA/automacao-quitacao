@@ -10,6 +10,12 @@ public final class ContratoDataValidator {
 
     public static void validar(ContratoData contrato) {
 
+        if (contrato == null) {
+            throw new TestDataException(
+                    "Contrato não pode ser nulo."
+            );
+        }
+
         if (contrato.getContrato() == null
                 || contrato.getContrato().isBlank()) {
             throw new TestDataException(
@@ -35,6 +41,13 @@ public final class ContratoDataValidator {
         if (contrato.getDesconto() < 0) {
             throw new TestDataException(
                     "Desconto não pode ser negativo. Contrato: "
+                            + contrato.getContrato()
+            );
+        }
+
+        if (contrato.getDesconto() > contrato.getValorDivida()) {
+            throw new TestDataException(
+                    "Desconto não pode ser maior que o valor da dívida. Contrato: "
                             + contrato.getContrato()
             );
         }
