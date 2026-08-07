@@ -3,7 +3,9 @@ package com.automation.testdata;
 import com.automation.model.ContratoData;
 import net.datafaker.Faker;
 
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.IntStream;
 
 public final class ContratoFakerFactory {
 
@@ -47,5 +49,21 @@ public final class ContratoFakerFactory {
         contrato.setValorQuitacaoEsperado(valorQuitacao);
 
         return contrato;
+    }
+
+    public static List<ContratoData> criarContratosValidos(
+            int quantidade
+    ) {
+
+        if (quantidade <= 0) {
+            throw new IllegalArgumentException(
+                    "A quantidade de contratos deve ser maior que zero."
+            );
+        }
+
+        return IntStream
+                .range(0, quantidade)
+                .mapToObj(i -> criarContratoValido())
+                .toList();
     }
 }
