@@ -1,0 +1,15 @@
+environment=hml
+
+base.url=URL_PADRAO
+base.url.dev=URL_DEV
+base.url.hml=URL_HML
+base.url.prod=URL_PROD
+
+browser=chrome
+headless=false
+
+viewport.width=1920
+viewport.height=1080
+
+login.usuario=SEU_USUARIO
+login.senha=SUA_SENHA
