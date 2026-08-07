@@ -12,7 +12,7 @@
     <version>1.0.0</version>
 
     <name>Automation Framework</name>
-    <description>Framework de Automação Web, API, SOAP e Banco de Dados</description>
+    <description>Framework de AutomaÃ§Ã£o Web, API, SOAP e Banco de Dados</description>
 
     <properties>
 
@@ -215,7 +215,7 @@
 
             </plugin>
 
-            <!-- EXECUÇÃO DOS TESTES -->
+            <!-- EXECUÃ‡ÃƒO DOS TESTES -->
 
             <plugin>
 
@@ -230,9 +230,9 @@
 
                     <!--
                         Testes marcados com @Tag("external")
-                        não executam na suíte principal.
+                        nÃ£o executam na suÃ­te principal.
                     -->
-                    <excludedGroups>external</excludedGroups>
+                    <excludedGroups>external,integration</excludedGroups>
 
                     <!-- ALLURE -->
                     <systemPropertyVariables>
